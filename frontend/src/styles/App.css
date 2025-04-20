@@ -1,0 +1,98 @@
+/* App.css */
+
+/* ✅ Reset basic styles for consistency */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff; /* ✅ Clean white background */
+  color: #1a2a4a; /* ✅ Navy for strong readability */
+  line-height: 1.6; /* ✅ Improved text spacing */
+}
+
+/* ✅ Heading styles with navy color */
+h1, h2, h3, h4, h5, h6 {
+  color: #002147; /* ✅ Deep navy for contrast */
+  font-weight: bold;
+}
+
+/* ✅ Standard button styling */
+button {
+  font-family: inherit;
+  background-color: #002147; /* ✅ Navy background */
+  color: #ffffff; /* ✅ White text for clear contrast */
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #001a38; /* ✅ Darker navy for hover effect */
+  transform: scale(1.05);
+}
+
+/* ✅ Improved container layout */
+.container {
+  max-width: 1100px; /* ✅ Professional width */
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow for modern depth */
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+/* ✅ Navigation link styling */
+a {
+  color: #002147; /* ✅ Navy links */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #004080; /* ✅ Lighter navy for hover */
+}
+
+/* ✅ Logo Styling */
+.logo-img {
+  width: 100px; /* ✅ Standard website logo size */
+  height: auto;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* ✅ Header Styling */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #002147; /* ✅ Navy header */
+}
+
+header h1 {
+  color: #ffffff; /* ✅ White text for contrast */
+}
+
+/* ✅ Footer Styling */
+footer {
+  background-color: #002147; /* ✅ Navy footer */
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+

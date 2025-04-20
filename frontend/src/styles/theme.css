@@ -1,0 +1,21 @@
+:root {
+  /* Primary Colors */
+  --primary-color: #1E3A8A; /* Navy */
+  --secondary-color: #A855F7; /* White */
+  --accent-color: #E0E7FF; /* Light Lavender */
+
+  /* Text Colors */
+  --text-primary: #FFFFFF; /* White */
+  --text-secondary: #1E293B; /* Dark Gray */
+
+  /* Button Colors */
+  --button-primary: #1E3A8A; /* Navy */
+  --button-primary-hover: #153060; /* Darker Navy */
+  --button-secondary: #A855F7; /* Purple */
+  --button-secondary-hover: #7E3AA6; /* Darker Purple */
+
+  /* Link Colors */
+  --link-color: #A855F7; /* Purple */
+  --link-hover: #1E3A8A; /* Navy */
+}
+

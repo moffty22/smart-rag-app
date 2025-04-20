@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: smart-rag-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: smart-rag-frontend
+  template:
+    metadata:
+      labels:
+        app: smart-rag-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: your-dockerhub-username/smart-rag-frontend:latest
+        ports:
+        - containerPort: 80
+

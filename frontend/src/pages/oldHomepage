@@ -1,0 +1,95 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const HomePage = ({ user, onSignOut }) => {
+  const { email, idToken } = user || {};
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-500 via-blue-500 to-green-500">
+      {/* Header with Home, Login, Register buttons */}
+      <header className="bg-white text-black py-4 px-6 flex justify-between items-center shadow-md">
+        <h1 className="text-2xl font-bold">Smart RAG App</h1>
+        <div className="flex space-x-6">
+          {!user ? (
+            <>
+              <Link
+                to="/login"
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition duration-300"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-accent transition duration-300"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <button
+              onClick={onSignOut}
+              className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
+            >
+              Logout
+            </button>
+          )}
+        </div>
+      </header>
+
+      {/* Main content */}
+      <div className="flex-grow flex flex-col justify-center items-center text-white p-6">
+        <h2 className="text-5xl font-extrabold mb-6 text-center drop-shadow-lg">
+          Welcome to <span className="text-yellow-300">Smart RAG App</span>
+        </h2>
+
+        <p className="text-lg font-medium mb-4 text-center max-w-lg shadow-sm">
+          <span className="italic">"Empowering Insights, One Question at a Time"</span>
+        </p>
+
+        <p className="text-md mb-6 text-center max-w-md leading-relaxed">
+          Unlock smarter knowledge retrieval with our AI-powered platform, designed to enhance your learning experience.
+        </p>
+
+        {user ? (
+          <div className="bg-white text-black p-6 rounded-lg shadow-lg text-center w-full max-w-md">
+            <h3 className="text-xl font-bold mb-4">Hello, {email}</h3>
+            <details className="mb-4">
+              <summary className="text-blue-500 cursor-pointer">View Token</summary>
+              <div className="text-sm mt-2 p-2 bg-gray-200 rounded break-words">
+                <p><strong>ID Token:</strong> {idToken}</p>
+              </div>
+            </details>
+            <button
+              onClick={onSignOut}
+              className="px-6 py-3 bg-red-500 text-white font-bold rounded-lg shadow-lg hover:bg-red-600 transition-transform transform hover:scale-105"
+            >
+              🔓 Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex space-x-6">
+            <Link
+              to="/guest"
+              className="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-500 transition-transform transform hover:scale-105"
+            >
+              🚀 Try It Now
+            </Link>
+            <Link
+              to="/login"
+              className="px-6 py-3 bg-red-500 font-bold rounded-lg shadow-lg hover:bg-red-600 transition-transform transform hover:scale-105"
+            >
+              🔑 Login
+            </Link>
+          </div>
+        )}
+
+        <div className="mt-10 opacity-80 animate-bounce">
+          <p className="text-sm font-semibold">Scroll down for more!</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
+

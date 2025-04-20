@@ -1,0 +1,108 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { useAuth } from "react-oidc-context";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import TeacherDashboard from "./pages/TeacherDashboard";
+import StudentDashboard from "./pages/StudentDashboard";
+import ReportsPage from "./pages/ReportsPage";
+import GenerateQuestionsPage from "./pages/GenerateQuestionsPage";
+import UploadComponent from "./components/UploadComponent";
+import ReviewReport from "./components/ReviewReport";
+import Callback from "./components/Callback";
+import NotFoundPage from "./pages/NotFoundPage";
+import TeacherRegistration from "./components/TeacherRegistration";
+import StudentRegistration from "./components/StudentRegistration";
+
+const signOutRedirect = () => {
+  const clientId = process.env.REACT_APP_COGNITO_CLIENT_ID;
+  const logoutUri = process.env.REACT_APP_COGNITO_LOGOUT_URI;
+  const cognitoDomain = process.env.REACT_APP_COGNITO_DOMAIN;
+
+  window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+};
+
+const App = () => {
+  const auth = useAuth();
+
+  if (auth.isLoading) {
+    return (
+      <div className="bg-gray-100 min-h-screen flex items-center justify-center text-gray-900">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (auth.error) {
+    return (
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center text-red-600">
+        <p>Encountering error: {auth.error.message}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-gray-100 min-h-screen text-gray-900 flex flex-col">
+      <Navbar />
+      <main className="flex-grow container mx-auto px-4 py-6">
+        {auth.isAuthenticated ? (
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-bold text-blue-700">
+              Welcome, {auth.user?.profile.email}
+            </h2>
+            {auth.user?.profile.preferred_username && (
+              <p className="text-gray-700">
+                Username: {auth.user.profile.preferred_username}
+              </p>
+            )}
+            <button
+              onClick={() => auth.removeUser()}
+              className="mt-4 px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+            >
+              Sign out
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center">
+            <button
+              onClick={() => auth.signinRedirect()}
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
+              Sign in
+            </button>
+            <button
+              onClick={signOutRedirect}
+              className="mt-2 px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+            >
+              Sign out
+            </button>
+          </div>
+        )}
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+          <Route path="/student-dashboard" element={<StudentDashboard />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/generate-questions" element={<GenerateQuestionsPage />} />
+          <Route path="/upload" element={<UploadComponent />} />
+          <Route path="/review-report" element={<ReviewReport />} />
+          <Route path="/callback" element={<Callback />} />
+          <Route path="/teacher-register" element={<TeacherRegistration />} />
+          <Route path="/student-register" element={<StudentRegistration />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
+

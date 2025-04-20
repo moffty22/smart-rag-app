@@ -1,0 +1,95 @@
+/* 🌟 Professional and Catchy Theme */
+
+/* Define a CSS variable-based color scheme */
+:root {
+  --primary-color: #1E3A8A; /* Navy */
+  --secondary-color: #FFFFFF; /* White */
+  --accent-color: #E0E7FF; /* Light Lavender */
+  --background-gradient: linear-gradient(to bottom right, #1E3A8A, #FFFFFF); /* Navy to White Gradient */
+  --text-primary: #FFFFFF; /* White */
+  --text-secondary: #1E293B; /* Dark Gray */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--background-gradient); /* Professional gradient */
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure layout with a sticky footer */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Allow the main content to fill available space */
+  width: 100%; /* Ensure full width */
+  padding: 1rem; /* Add padding for better readability */
+  box-sizing: border-box; /* Include padding in total width/height */
+  background: var(--accent-color); /* Light Lavender for contrast */
+  color: var(--text-secondary); /* Dark Gray for readable text */
+  border-radius: 12px;
+}
+
+/* Footer styles */
+footer {
+  background: var(--primary-color); /* Navy */
+  color: var(--text-primary); /* White */
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Card with Glassmorphism Effect */
+.card {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: var(--text-secondary);
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for elegance */
+}
+
+/* Buttons with Hover Effect */
+.button {
+  padding: 12px 24px;
+  background: var(--secondary-color); /* White */
+  color: var(--text-secondary); /* Dark Gray */
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  background: var(--primary-color); /* Navy on hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  main {
+    border-radius: 8px; /* Adjust radius for smaller screens */
+  }
+}
+
